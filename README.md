@@ -17,6 +17,6 @@ menu = [
 ```
 
 **Consideraciones:**
-Se deberá tener en cuenta el - [layout](menuMockup.pdf) adjunto
+Se deberá tener en cuenta el [layout](menuMockup.pdf) adjunto
 El bloque destacado en color naranja, deberá mostrar el listado de los platos seleccionados por
 el usuario una vez que haya clickeado el botón Confirmar.
