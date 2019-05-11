@@ -1,4 +1,4 @@
-##Objetivo: Arma tu combo.
+## Objetivo: Arma tu combo.
 
 **Pautas:** A partir del siguiente arreglo, permitir al usuario elegir por pantalla la
 combinación de alimentos para su almuerzo.
