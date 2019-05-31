@@ -6,30 +6,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <script src="main.js" type="text/javascript"></script>
 </head>
 
-<body>
+<body onload="setSelects()">
     <div class="container">
         <div class="menu">
             <h2 class="title">Elige tu mejor opción de almuerzo</h2>
             <form action="submit" class="formulario">
-                <label>Entrada</label>
-                <select id="principal">
+                <div>
 
-                </select>
+                    <label>Entrada</label>
+                    <select id="entree">
+                    </select>
+                </div>
+                <div>
 
-                <label>Plato Principal</label>
-                <select id="guarnicion">
+                    <label>Plato Principal</label>
+                    <select id="garnish">
 
-                </select>
+                    </select>
+                </div>
+                <div>
 
-                <label>Postre</label>
-                <select id="postre">
+                    <label>Postre</label>
+                    <select id="dessert">
 
-                </select>
-                
-                <button type="button" id="confirmar">Confirmar</button>
-            </form>
+                    </select>
+                </div>
+
+                <button type="button" id="confirmar" onclick="confirm()">Confirmar</button>
+            </form> 
         </div>
 
         <div id="ticket">
@@ -39,7 +46,7 @@
             </ul>
         </div>
     </div>
-    
+
 </body>
 
 </html>
