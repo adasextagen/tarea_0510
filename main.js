@@ -1,4 +1,4 @@
-var entree, garnish, dessert
+var entree, garnish, dessert, orderUl
 var order = []
 menu = [
 	{ name : "Tarta de jamón y queso", type: "principal" },
@@ -37,8 +37,28 @@ var setSelects = function(){
 }
 
 var confirm = function(){
+    order = []
     order.push(menu[entree.value])
     order.push(menu[garnish.value])
     order.push(menu[dessert.value])
-    console.log(order)
+    orderUl =  document.getElementById('orderUl')
+    orderUl.innerHTML = ''
+
+    var aux = JSON.stringify(order)
+    window.localStorage.setItem('order', aux)
+
+    printOrder();
+}
+
+var printOrder = function(){
+    order.map(function(item){
+        var li = document.createElement('li')
+        li.innerText = item.name;
+        orderUl.appendChild(li)
+    })
+}
+
+var checkStorage = function(){
+    var storedOrders = window.localStorage.getItem('order')
+    console.log(storedOrders)
 }
