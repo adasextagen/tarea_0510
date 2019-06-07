@@ -32,9 +32,12 @@ const fillSelects = list => {
     list.forEach( e => {
         let select = document.getElementById(e.type)
         let option = document.createElement('option')
-        option.innerText = e.name
+        option.childElementCount === 0 ? option.innerText = 'Select'
+        option.innerText = e.name 
         option.id = e.id
         select.appendChild(option)
+
+        
     })
 }
 
