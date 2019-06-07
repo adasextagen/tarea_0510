@@ -12,44 +12,21 @@
     <script src="main.js" type="text/javascript"></script>
 </head>
 
-<body onload="setSelects()">
-    <div class="container">
-        <div class="menu">
-            <h2 class="title">Elige tu mejor opción de almuerzo</h2>
-            <form action="submit" class="formulario">
-                <div>
+<body onload="initialize()">
+    <div class="menu">
+        <h2 class="title">Elige tu mejor opción de almuerzo</h2>
+        <div id="selects">
 
-                    <label>Entrada</label>
-                    <select id="entree">
-                    </select>
-                </div>
-                <div>
-
-                    <label>Plato Principal</label>
-                    <select id="garnish">
-
-                    </select>
-                </div>
-                <div>
-
-                    <label>Postre</label>
-                    <select id="dessert">
-
-                    </select>
-                </div>
-
-                <button type="button" id="confirmar" onclick="confirm()">Confirmar</button>
-            </form> 
         </div>
-
-        <div id="orderUl" class="order">
-            <h2>Tu almuerzo:</h2>
-            <ul id="orderUl">
-
-            </ul>
-        </div>
+        <button type="button" id="confirmar" onclick="confirm()">Confirmar</button>
     </div>
 
+    <div id="ticket">
+        <h2>Tu almuerzo:</h2>
+        <ul id="orderUl">
+
+        </ul>
+    </div>
 </body>
 
 </html>
