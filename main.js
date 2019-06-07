@@ -28,14 +28,25 @@ const createSelects = (list, container) => {
 }
 
 // LLENAR LOS SELECTORES CON LA INFO PERTINENTE
+
+// Colocar en cada select un option sin value como placeholder
+
 const fillSelects = list => {
     list.forEach( e => {
         let select = document.getElementById(e.type)
-        let option = document.createElement('option')
-        option.innerText = e.name
-        option.id = e.id
-        select.appendChild(option)
+        if(select.childElementCount === 0){
+            let placeholder = {name:`seleccione plato ${e.type}`, id:''}
+            select.appendChild(createOption(placeholder))
+        }
+        select.appendChild(createOption(e))
     })
+}
+
+const createOption = elem =>{
+    let option = document.createElement('option')
+    option.innerText = elem.name
+    option.value = elem.id
+    return option
 }
 
 // inicializacion del programa
