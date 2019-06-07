@@ -1,5 +1,4 @@
-let order = []
-menu = [
+const menu = [
 	{ id:0001, name: "Tarta de jamón y queso", type:"Principal", price:100, promo:"1" },
 	{ id:0002, name: "Ensalada caprese" , type:"Principal", price:150, promo:"1" },
 	{ id:0003, name: "Milanesa", type:"Principal", price:200, promo:"1" },
@@ -13,38 +12,35 @@ menu = [
     { id:0011, name: "Paso de los toros", type: "Bebida", price:50, promo:"1"},
 ]
 
-// Identificar tipos de platos
-let allTypes = menu.map( e => e.type)
-let productTypes = allTypes.filter((e,i) => allTypes.indexOf(e) === i)
+// IDENTIFICAR LOS TIPOS DE PLATOS
+// una lista con todos los tipos de platos del menu
+const allTypes = menu.map(({type}) => type)
+// Nuev lista con tipos únicos
+const plateTypes = allTypes.filter((e, i) => allTypes.indexOf(e) === i)
 
-// Crear contenedores tipo
-const createSelects = container => {
-    productTypes.forEach(e => {
+// GENERAR SELECTORES POR CADA UNO
+const createSelects = (list, container) => {
+    list.forEach(e => {
         let select = document.createElement('select')
         select.id = e
         container.appendChild(select)
     })
 }
 
-// Popular contenedores según
-const fillSelects = data => {
-    data.forEach(e => {
+// LLENAR LOS SELECTORES CON LA INFO PERTINENTE
+const fillSelects = list => {
+    list.forEach( e => {
         let select = document.getElementById(e.type)
-        !select.childElementCount ? select.appendChild(createOption({name:`Seleccione ${e.type}`, id:''})) : null
-        select.appendChild(createOption(e))
+        let option = document.createElement('option')
+        option.innerText = e.name
+        option.id = e.id
+        select.appendChild(option)
     })
-
-
-const createOption = ({name, id}) => {
-    let option = document.createElement('option')
-    option.innerText = name
-    option.id = id
-    return option
 }
 
-// funcion inicializadora
-const initialize = () => {
-    let container = document.getElementById('selects')
-    createSelects(container)
+// inicializacion del programa
+const initialize = () =>{
+    let mainDiv = document.getElementById('selects')
+    createSelects(plateTypes, mainDiv)
     fillSelects(menu)
 }
