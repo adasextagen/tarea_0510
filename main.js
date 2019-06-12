@@ -1,3 +1,4 @@
+let ordersList = []
 const menu = [
 	{ id:"0001", name: "Tarta de jamón y queso", type:"Principal", price:100, promo:"1" },
 	{ id:"0002", name: "Ensalada caprese" , type:"Principal", price:150, promo:"1" },
@@ -55,9 +56,31 @@ const createOrder = () => {
     plateTypes.forEach( e => {
         let select = document.getElementById(e)
         let plate = menu.find( e => e.id === select.value)
+        select.value = ''
         order.push(plate)
     })
-    console.log(order)
+    ordersList.push(order)
+    printOrders()
+}
+
+const printOrders = () => {
+    let container = document.getElementById('orders')
+    container.innerHTML = ""
+
+    ordersList.forEach(order => {
+        let orderUl = document.createElement('ul')
+        let totalPrice = 0
+        order.forEach(plate =>{
+            let plateLi = document.createElement('li')
+            plateLi.innerText = plate.name
+            totalPrice += plate.price
+            orderUl.appendChild(plateLi)
+        })
+        let priceLi = document.createElement('li')
+        priceLi.innerText = `Precio: ARS ${totalPrice}`
+        orderUl.appendChild(priceLi)
+        container.appendChild(orderUl)
+    })
 }
 
 // inicializacion del programa
@@ -65,4 +88,5 @@ const initialize = () =>{
     let mainDiv = document.getElementById('selects')
     createSelects(plateTypes, mainDiv)
     fillSelects(menu)
+    printOrders()
 }
