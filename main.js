@@ -1,17 +1,5 @@
 let ordersList = [
-    [{ id: "0001", name: "Tarta de jamón y queso", type: "Principal", price: 100, promo: "1" },
-    { id: "0002", name: "Ensalada caprese", type: "Principal", price: 150, promo: "2" },
-    { id: "0003", name: "Milanesa", type: "Principal", price: 200, promo: "3" },
-    { id: "0004", name: "Ensalada mixta", type: "Guarnición", price: 120, promo: "1" }
-    ], [{ id: "0001", name: "Tarta de jamón y queso", type: "Principal", price: 100, promo: "1" },
-    { id: "0002", name: "Ensalada caprese", type: "Principal", price: 150, promo: "2" },
-    { id: "0003", name: "Milanesa", type: "Principal", price: 200, promo: "3" },
-    { id: "0004", name: "Ensalada mixta", type: "Guarnición", price: 120, promo: "1" }
-    ], [{ id: "0001", name: "Tarta de jamón y queso", type: "Principal", price: 100, promo: "1" },
-    { id: "0002", name: "Ensalada caprese", type: "Principal", price: 150, promo: "2" },
-    { id: "0003", name: "Milanesa", type: "Principal", price: 200, promo: "3" },
-    { id: "0004", name: "Ensalada mixta", type: "Guarnición", price: 120, promo: "1" }
-    ],
+    
 ]
 const menu = [
     { id: "0001", name: "Tarta de jamón y queso", type: "Principal", price: 100, promo: "1" },
@@ -66,15 +54,16 @@ const createOption = elem => {
 }
 
 const createOrder = () => {
-    let order = []
+    let order = {plates:[], isActive:true, id:''}
     plateTypes.forEach(type => {
         let select = document.getElementById(type)
         let selectedPlate = menu.find(
             plate => plate.id === select.value
         )
         select.value = ''
-        order.push(selectedPlate)
+        order.plates.push(selectedPlate)
     })
+    order.id = `order00${ordersList.length}`
     ordersList.push(order)
     printOrders()
 }
@@ -84,17 +73,34 @@ const printOrders = () => {
     container.innerHTML = ""
 
     ordersList.forEach(order => {
-        let orderUl = document.createElement('ul')
-        order.forEach(plate => {
-            let plateLi = document.createElement('li')
-            plateLi.innerText = plate.name
-            orderUl.appendChild(plateLi)
-        })
-        let priceLi = document.createElement('li')
-        priceLi.innerText = totalPrice(order)
-        orderUl.appendChild(priceLi)
-        container.appendChild(orderUl)
+        if(order.isActive){            
+            let orderUl = document.createElement('ul')
+            order.plates.forEach(plate => {
+                let plateLi = document.createElement('li')
+                plateLi.innerText = plate.name
+                orderUl.appendChild(plateLi)
+            })
+            let priceLi = document.createElement('li')
+            priceLi.innerText = totalPrice(order.plates)
+            orderUl.appendChild(priceLi)
+
+            let deleteBtn = document.createElement('button')
+            deleteBtn.onclick = () => deleteOrder(order.id) 
+            deleteBtn.innerText = 'Eliminar orden'
+            orderUl.appendChild(deleteBtn)
+
+            container.appendChild(orderUl)
+        }
     })
+}
+
+const deleteOrder = id => {
+    ordersList.forEach(order => {
+        if(order.id === id){
+            order.isActive = false
+        }
+    })
+    printOrders()
 }
 
 //const totalPrice = order => order.map(plate => plate.price).reduce((a,b) => a+b)
