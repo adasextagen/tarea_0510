@@ -1,0 +1,99 @@
+#orders {
+  position: relative;
+}
+#orders ul {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  display: block;
+  padding: 10px 20px;
+  list-style: none;
+  background-color: #fefefe;
+  border: 1px solid #ccc;
+}
+#orders ul li:last-child {
+  color: red;
+  font-weight: bold;
+}
+#orders ul:nth-child(1) {
+  top: 10px;
+  left: 10px;
+  z-index: 1;
+}
+#orders ul:nth-child(1):hover {
+  z-index: 9999;
+}
+#orders ul:nth-child(2) {
+  top: 20px;
+  left: 20px;
+  z-index: 2;
+}
+#orders ul:nth-child(2):hover {
+  z-index: 9999;
+}
+#orders ul:nth-child(3) {
+  top: 30px;
+  left: 30px;
+  z-index: 3;
+}
+#orders ul:nth-child(3):hover {
+  z-index: 9999;
+}
+#orders ul:nth-child(4) {
+  top: 40px;
+  left: 40px;
+  z-index: 4;
+}
+#orders ul:nth-child(4):hover {
+  z-index: 9999;
+}
+#orders ul:nth-child(5) {
+  top: 50px;
+  left: 50px;
+  z-index: 5;
+}
+#orders ul:nth-child(5):hover {
+  z-index: 9999;
+}
+#orders ul:nth-child(6) {
+  top: 60px;
+  left: 60px;
+  z-index: 6;
+}
+#orders ul:nth-child(6):hover {
+  z-index: 9999;
+}
+#orders ul:nth-child(7) {
+  top: 70px;
+  left: 70px;
+  z-index: 7;
+}
+#orders ul:nth-child(7):hover {
+  z-index: 9999;
+}
+#orders ul:nth-child(8) {
+  top: 80px;
+  left: 80px;
+  z-index: 8;
+}
+#orders ul:nth-child(8):hover {
+  z-index: 9999;
+}
+#orders ul:nth-child(9) {
+  top: 90px;
+  left: 90px;
+  z-index: 9;
+}
+#orders ul:nth-child(9):hover {
+  z-index: 9999;
+}
+#orders ul:nth-child(10) {
+  top: 100px;
+  left: 100px;
+  z-index: 10;
+}
+#orders ul:nth-child(10):hover {
+  z-index: 9999;
+}
+
+/*# sourceMappingURL=styles.css.map */
